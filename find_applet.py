@@ -26,6 +26,10 @@ if (EncryptBufToFile) {
     // HOOK函数, 监听参数
     Interceptor.attach(EncryptBufToFile, {
         onEnter: function (args) {
+            // 微信小程序AppId
+            //this.appId = ptr(args[0]).readPointer().readAnsiString();
+            // 微信小程序本地缓存文件路径
+            //this.apkgFilePath = ptr(args[1]).readPointer().readAnsiString();
             this.apkgFilePath = "D://" + Math.random().toString().slice(-6) + ".wxapkg";
             // 小程序代码原始内容(未加密)
             this.originalData = Memory.readByteArray(args[2], args[3].toInt32());
